@@ -1,0 +1,15 @@
+package Exercise4point5;
+
+//sub class for Apple
+public class RedApple extends Apple{
+	
+	public RedApple(int q, double p) {//inherit from super clasa Apple
+		super(q,p);
+	}
+	
+	//overriding method
+	public String toString() {
+		return ("Enjoy!\n");
+		}
+
+}
