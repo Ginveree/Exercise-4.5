@@ -1,0 +1,55 @@
+package Exercise4point5;
+
+public class Apple extends Fruit {
+	protected double price;
+	protected int quantity;
+
+	public Apple(int q, double p) {//constructor for sub class with 2 arguments
+		this.price = p;
+		this.quantity = q;
+		
+		if(this.quantity < 10) {
+			totalPrice();
+			System.out.println("Quantity\t\t: " + this.quantity);
+			System.out.printf("%s%.2f\n","Price for a apple\t: RM ",this.price);
+			System.out.printf("%s%.2f\n","Total price\t\t: RM ",totalPrice());
+		}
+		
+		else if(this.quantity > 10 && this.quantity < 100) {
+			double p2 = 2.0;
+			totalPrice(p2);
+			System.out.println("Quantity\t\t: " + this.quantity);
+			System.out.printf("%s%.2f\n","Price for a apple\t: RM ",p2);
+			System.out.printf("%s%.2f\n","Total price\t\t: RM ",totalPrice(p2));
+		}
+		
+		else {
+			double p3 = 1.50;
+			double d = 0.8;
+			totalPrice(p3,d);
+			System.out.println("Quantity\t\t: " + this.quantity);
+			System.out.printf("%s%.2f\n","Price for a apple\t: RM ",p3);
+			System.out.printf("%s%.2f\n","Total price\t\t: RM ",totalPrice(p3,d));
+		}		
+	}
+	
+	public double totalPrice() {
+		return this.price * this.quantity;
+	}
+	
+	public double totalPrice(double p2) {
+		//using abstract
+		Discount d = new AppleDiscount();
+		return p2 * this.quantity * (1 - d.rateOfDiscount());
+	}
+	
+	public double totalPrice(double p3, double dis) {
+		return p3 * this.quantity * dis;
+	}
+	
+	//overriding method
+	public String toString() {
+		return ("Thank you!\n");
+	}
+
+}
