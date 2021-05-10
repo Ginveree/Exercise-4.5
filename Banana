@@ -1,0 +1,60 @@
+package Exercise4point5;
+
+//sub class for Fruit
+public class Banana extends Fruit {
+	private int days, quantity;
+	private double price;
+	
+	public Banana(int d, int q, double p) {//constructor for sub class with 3 arguments
+		this.days = d;	
+		this.quantity = q;
+		this.price = p;
+		
+		if (this.days <= 3) {
+            totalPrice();
+            System.out.println("Quantity\t\t: " + this.quantity);
+            System.out.println("Price for a banana\t: RM " + this.price);
+			System.out.printf("%s%.2f\n","The bananas are very fresh!\nTotal Price\t\t: RM ",totalPrice());
+		}
+		
+		else if (this.days > 3 && this.days <= 6) {
+			double price2 = 4.50;
+			totalPrice(price2);
+			System.out.println("Quantity\t\t: " + this.quantity);
+			System.out.println("Price for a banana\t: RM " + price2);
+			System.out.printf("%s%.2f\n","The bananas are still edible.\nTotal price\t\t: RM ",totalPrice(price2));
+		}
+		
+		else {
+			double price3 = 3.00;
+			double dis = 0.85;
+			totalPrice(price3, dis);
+			System.out.println("Quantity\t\t: " + this.quantity);
+			System.out.println("Price for a banana\t: RM " + price3);
+			System.out.printf("%s%.2f\n","The bananas are overripe!\nTotal price\t\t: RM ",totalPrice(price3,dis));
+		}
+	}
+	
+	//overloading method with no parameter
+	public double totalPrice() {
+		return this.price * this.quantity;
+	}
+	
+	//overloading method with 1 parameter
+	public double totalPrice(double p2) {
+		//using abstract 
+		Discount d = new BananaDiscount();
+		return p2 * this.quantity * (1 - d.rateOfDiscount());
+	}
+	
+	//overloading method with 2 parameter
+	public double totalPrice(double p3, double dis) {
+		return p3 * this.quantity * dis;
+	}
+	
+	//overriding method
+	public String toString() {
+		return ("Please come again!\n");
+	}
+
+}
