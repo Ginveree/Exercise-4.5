@@ -1,0 +1,7 @@
+package Exercise4point5;
+
+public interface Discount {
+	//interface class only abstract method
+	float rateOfDiscount();
+
+}
